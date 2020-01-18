@@ -1,4 +1,4 @@
-# spring5webapp [![Run on Repl.it](https://repl.it/badge/github/ravi2519/spring5webapp)](https://repl.it/github/ravi2519/spring5webapp)
+# spring5webapp 
 
 Started with a Spring Boot Project with Web, JPA and H2
 
@@ -19,3 +19,4 @@ Equals, HashCOde and toStirng implemented for Author and Book
  
 `spring.h2.console.enabled=true` is set in application properties. 
 This helps in accessing the web console for H2 (localhost:8080/h2-console)
+JDBC Url will be "jdbc:h2:mem:testdb"
