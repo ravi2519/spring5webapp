@@ -3,13 +3,7 @@ package com.springframework.spring5.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
 public class Book {
@@ -18,9 +12,12 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String title;
-	private String publisher;
+
+	@OneToOne
+	private Publisher publisher;
+
 	private String isbn;
-	
+
 	@ManyToMany
 	@JoinTable(name="author_book", joinColumns = @JoinColumn(name="book_id"),
 	inverseJoinColumns = @JoinColumn(name="author_id"))
@@ -29,9 +26,8 @@ public class Book {
 	public Book() {
 	}
 
-	public Book(String title, String publisher, String isbn) {
+	public Book(String title, String isbn) {
 		this.title = title;
-		this.publisher = publisher;
 		this.isbn = isbn;
 	}
 
@@ -51,14 +47,6 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-
 	public String getIsbn() {
 		return isbn;
 	}
@@ -73,6 +61,14 @@ public class Book {
 
 	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	@Override
