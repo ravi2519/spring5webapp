@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Controller</title>
+</head>
+<body>
+
+    <h1>Books</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Publisher</th>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}">123</td>
+            <td th:text="${book.title}">Some Book</td>
+            <td th:text="${book.isbn}">456</td>
+            <td th:text="${book.publisher.name}">Foo</td>
+        </tr>
+    </table>
+
+</body>
+</html>
